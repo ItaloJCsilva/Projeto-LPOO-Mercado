@@ -10,11 +10,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Conectar {
+   Connection con = null;
    public boolean OpenCon(String user,String password) throws ClassNotFoundException, SQLException {
-        try {
+        
+       try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tst","root","123456");
-            PreparedStatement statement = con.prepareStatement("SELECT * FROM Pessoas WHERE Nome=? AND senha=?");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tst","root","123456");
+            PreparedStatement statement = con.prepareStatement("SELECT * FROM Funcionario WHERE nome=? AND senha=?");
             statement.setString(1, user);
             statement.setString(2, password);
             ResultSet resultSet = statement.executeQuery();
@@ -24,9 +26,16 @@ public class Conectar {
         }
             
             
-    }}
+    }
+    public void CloseCon(){
+       try {
+           con.close();
+       } catch (SQLException ex) {
+           Logger.getLogger(Conectar.class.getName()).log(Level.SEVERE, null, ex);
+       }
 
-
+    }
+}
 
    
 
