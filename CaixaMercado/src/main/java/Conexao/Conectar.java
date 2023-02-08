@@ -10,23 +10,36 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Conectar {
-   Connection con = null;
-   public boolean OpenCon(String user,String password) throws ClassNotFoundException, SQLException {
+    Connection con ;
+    public boolean OpenCon1(String user,String password,String cargo) throws ClassNotFoundException, SQLException {
         
-       try {
+        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tst","root","123456");
-            PreparedStatement statement = con.prepareStatement("SELECT * FROM Funcionario WHERE nome=? AND senha=?");
+            PreparedStatement statement = con.prepareStatement("SELECT * FROM  " + "   " + cargo + "   " + "  WHERE nome=? AND senha=?");
             statement.setString(1, user);
             statement.setString(2, password);
             ResultSet resultSet = statement.executeQuery();
             return resultSet.next();
             
-            }finally{System.err.println("Funcionou");
-        }
+            }finally{}
             
             
     }
+    public boolean OpenCon2(String user,String password) throws ClassNotFoundException, SQLException {
+        
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/tst","root","123456");
+            PreparedStatement statement = con.prepareStatement("SELECT * FROM Caixa WHERE nome=? AND senha=?");
+            statement.setString(1, user);
+            statement.setString(2, password);
+            ResultSet resultSet = statement.executeQuery();
+            return resultSet.next();
+            
+        }finally{}
+        }
+     
     public void CloseCon(){
        try {
            con.close();
