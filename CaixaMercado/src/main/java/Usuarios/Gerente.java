@@ -8,6 +8,10 @@ package Usuarios;
  *
  * @author ITALO
  */
-public class Gerente {
+public class Gerente extends Funcionario{
+
+    public Gerente(String nome, Integer salario, String sexo, String cpf, String cargo, String senha) {
+        super(nome, salario, sexo, cpf, cargo, senha);
+    }
     
 }

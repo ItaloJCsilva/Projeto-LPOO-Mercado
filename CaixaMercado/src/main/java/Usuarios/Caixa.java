@@ -8,6 +8,12 @@ package Usuarios;
  *
  * @author ITALO
  */
-public class Caixa {
+public class Caixa extends Funcionario {
+
+    public Caixa(String nome, Integer salario, String sexo, String cpf, String cargo, String senha) {
+        super(nome, salario, sexo, cpf, cargo, senha);
+    }
     
 }
+
+
