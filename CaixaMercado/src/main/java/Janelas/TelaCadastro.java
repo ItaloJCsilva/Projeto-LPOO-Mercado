@@ -157,7 +157,7 @@ public class TelaCadastro extends javax.swing.JFrame {
 
         tab.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Nome", "Salario", "Sexo", "Cargo", "Senha"
