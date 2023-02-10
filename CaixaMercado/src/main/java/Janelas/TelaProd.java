@@ -113,6 +113,11 @@ public class TelaProd extends javax.swing.JFrame {
         jScrollPane1.setViewportView(ptab);
 
         jButton1.setText("Voltar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Atualizar");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -330,6 +335,11 @@ public class TelaProd extends javax.swing.JFrame {
             }
             else {JOptionPane.showMessageDialog(null,"Selecione um produto"); }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new Telavenda().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
