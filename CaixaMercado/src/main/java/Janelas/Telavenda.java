@@ -5,6 +5,13 @@
 package Janelas;
 
 import Conexao.Conectar;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.FileNotFoundException;
+
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,7 +19,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -105,6 +115,11 @@ public class Telavenda extends javax.swing.JFrame {
         });
 
         jButton2.setText("Imprimir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Sair");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -296,6 +311,9 @@ public class Telavenda extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         vtxt.setText("");
+        vnome.setText("");
+        vpreco.setText("");
+        vqtd.setText("");
         i=0;
         calculo=0;
         total=0;
@@ -305,6 +323,29 @@ public class Telavenda extends javax.swing.JFrame {
         new TelaLogin().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            Document document=new Document();
+            PdfWriter.getInstance(document,new FileOutputStream("C:\\Users\\ITALO\\Desktop\\Mercado\\Boleto.pdf"));
+            document.open();
+            document.add(new Paragraph(vtxt.getText()));
+            document.close();
+            vtxt.setText("");
+            vnome.setText("");
+            vpreco.setText("");
+            vqtd.setText("");
+            i=0;
+            calculo=0;
+            total=0;
+            JOptionPane.showMessageDialog(null,"Venda completa ");
+        } catch (DocumentException ex) {
+            Logger.getLogger(Telavenda.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Telavenda.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

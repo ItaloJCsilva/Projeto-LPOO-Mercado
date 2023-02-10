@@ -31,3 +31,4 @@ INSERT INTO Caixa (id,nome, salario,sexo,cargo,senha)
 VALUES ('1','Maria', '1200.00','f','caixa','2');
 select * from gerente;
 select * from Caixa;
+select * from produtos;
